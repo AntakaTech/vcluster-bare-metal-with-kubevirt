@@ -1,7 +1,7 @@
 .PHONY: vind-up vind-down install install-cert-manager install-cni-static install-kubevirt install-bridge install-platform reset-admin-password install-os-image install-ssh-key install-node-provider install-network-environment create-vms create-machine create-vcluster create-ssh-service
 
 CLUSTER_NAME ?= bare-metal-fun
-KUBECONFIG := $(CURDIR)/kubeconfig
+KUBECONFIG := $(CURDIR)/kubeconfig-$(CLUSTER_NAME)
 export KUBECONFIG
 
 PLATFORM_VERSION ?= 4.8.0
@@ -12,6 +12,10 @@ CDI_VERSION ?= v1.64.0
 vind-up:
 	vcluster --driver docker create $(CLUSTER_NAME)
 	vcluster --driver docker connect $(CLUSTER_NAME) --print > $(KUBECONFIG)
+	@echo "Cluster: $(CLUSTER_NAME)"
+	@echo "Kubeconfig: $(KUBECONFIG)"
+	kubectl cluster-info
+	kubectl get nodes -o wide
 
 vind-down:
 	vcluster --driver docker delete $(CLUSTER_NAME)

@@ -1,2 +1,9 @@
-.idea
+.*
+!.gitignore
+!.github
+!.actrc
+!.editorconfig
+
+*.iml
+
 kubeconfig
