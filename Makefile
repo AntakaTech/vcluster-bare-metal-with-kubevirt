@@ -91,4 +91,4 @@ create-vcluster:
 	kubectl apply -f manifests/vcluster.yaml
 
 create-ssh-service:
-	kubectl apply -f manifests/ssh-service.yaml
+	kubectl apply -f manifests/ssh-key.yaml

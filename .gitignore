@@ -5,5 +5,7 @@
 !.editorconfig
 
 *.iml
+# draft files created for local testing
+**/*draft*
 
 kubeconfig
